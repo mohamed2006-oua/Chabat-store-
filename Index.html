@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Morocco</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --dark: #0d0d0d;
+      --dark2: #1a1a1a;
+      --cream: #f5f0e8;
+      --text-light: #d4c9b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Tajawal', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(ellipse at top, #2a1f0a 0%, var(--dark) 70%);
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px);
+    }
+
+    .logo-line {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem;
+      animation: expandLine 1.2s ease forwards;
+      transform-origin: center;
+    }
+
+    @keyframes expandLine {
+      from { width: 0; opacity: 0; }
+      to { width: 80px; opacity: 1; }
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), #a07830);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 1s ease 0.3s both;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    .hero-tagline {
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 380px;
+      line-height: 1.8;
+      animation: fadeUp 1s ease 0.7s both;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      animation: fadeUp 1s ease 0.9s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+
+    .hero-cta:hover { color: var(--dark); }
+    .hero-cta:hover::before { transform: translateX(0); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CATEGORIES */
+    .section-title {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: var(--gold-light);
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .divider {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1rem auto;
+    }
+
+    /* CATEGORIES GRID */
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1rem 1.5rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      position: relative;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: var(--dark2);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .category-card:hover { 
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .category-card:hover::before { opacity: 1; }
+
+    .category-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .category-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .category-card p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* PRODUCTS */
+    .products-section {
+      background: var(--dark2);
+      padding: 1rem 0 4rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      transform: translateY(-3px);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #1f1a10, #2a2010);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--dark), transparent);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 1rem;
+    }
+
+    .product-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-info .type {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info .price {
+      font-size: 1rem;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .order-btn {
+      display: block;
+      width: 100%;
+      padding: 0.7rem;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.8rem;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .order-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 100;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+
+    footer .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    footer .contact-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.8rem;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding-bottom: 2px;
+    }
+
+    /* FILTER TABS */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.5rem 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 0.4rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: transparent;
+      color: var(--text-light);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.75rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-line"></div>
+  <div class="brand-name">Fashion Morocco</div>
+  <div class="brand-sub">Luxury Handbags Collection</div>
+  <p class="hero-tagline">شناط نسائية فاخرة بلمسة مغربية أصيلة — luxury وdaily لكل مناسبة</p>
+  <a href="#collection" class="hero-cta">اكتشفي المجموعة</a>
+</header>
+
+<!-- CATEGORIES -->
+<div class="section-title">
+  <h2>أنواع مجموعتنا</h2>
+  <div class="divider"></div>
+  <p>كل شنطة قصة، كل لون تعبير</p>
+</div>
+
+<div class="categories">
+  <div class="category-card">
+    <span class="category-icon">💎</span>
+    <h3>Luxury</h3>
+    <p>شناط فاخرة لكل مناسبة راقية</p>
+  </div>
+  <div class="category-card">
+    <span class="category-icon">🌿</span>
+    <h3>Daily</h3>
+    <p>شناط يومية عملية وأنيقة</p>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-section" id="collection">
+  <div class="section-title">
+    <h2>المجموعة</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="filter-tab active">الكل</button>
+    <button class="filter-tab">Luxury</button>
+    <button class="filter-tab">Daily</button>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">
+        👜
+        <span class="product-badge">New</span>
+      </div>
+      <div class="product-info">
+        <div class="type">Luxury</div>
+        <h4>شنطة سواريه ذهبية</h4>
+        <div class="price">تواصلي معنا</div>
+        <a href="https://wa.me/212671098067?text=مرحبا، بغيت نستفسر على شنطة سواريه ذهبية" class="order-btn" target="_blank">🛍 اطلبي الآن</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        👝
+        <span class="product-badge">Best</span>
+      </div>
+      <div class="product-info">
+        <div class="type">Daily</div>
+        <h4>شنطة يومية أنيقة</h4>
+        <div class="price">تواصلي معنا</div>
+        <a href="https://wa.me/212671098067?text=مرحبا، بغيت نستفسر على شنطة يومية أنيقة" class="order-btn" target="_blank">🛍 اطلبي الآن</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        💼
+      </div>
+      <div class="product-info">
+        <div class="type">Luxury</div>
+        <h4>شنطة كتف فاخرة</h4>
+        <div class="price">تواصلي معنا</div>
+        <a href="https://wa.me/212671098067?text=مرحبا، بغيت نستفسر على شنطة كتف فاخرة" class="order-btn" target="_blank">🛍 اطلبي الآن</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        🎒
+      </div>
+      <div class="product-info">
+        <div class="type">Daily</div>
+        <h4>شنطة عصرية متعددة</h4>
+        <div class="price">تواصلي معنا</div>
+        <a href="https://wa.me/212671098067?text=مرحبا، بغيت نستفسر على شنطة عصرية متعددة" class="order-btn" target="_blank">🛍 اطلبي الآن</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Fashion Morocco</div>
+  <p>شناط نسائية luxury وdaily</p>
+  <a href="https://wa.me/212671098067" class="contact-link" target="_blank">📞 +212 671 098 067</a>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/212671098067?text=مرحبا، بغيت نستفسر على شنطة" class="whatsapp-float" target="_blank">
+  💬
+</a>
+
+<script>
+  // Filter tabs
+  const tabs = document.querySelectorAll('.filter-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelector('.hero-cta').addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector('#collection').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
